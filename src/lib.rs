@@ -8,7 +8,7 @@ use std::fs::{File, OpenOptions};
 use std::io::Write;
 
 #[derive(PartialEq, PartialOrd)]
-enum LogLevel {
+pub enum LogLevel {
     Trace,
     Debug,
     Info,
@@ -34,7 +34,7 @@ impl fmt::Display for LogLevel {
     }
 }
 
-struct Logger {
+pub struct Logger {
     session_start : SystemTime,
     log_level: LogLevel,
     use_subseconds_enabled : bool,
@@ -47,7 +47,7 @@ struct Logger {
 impl Logger {
 
     //Logger Constructor
-    fn new() -> Self {
+    pub fn new() -> Self {
         let session_start=SystemTime::now();
         Self {
             session_start : session_start,
@@ -60,11 +60,11 @@ impl Logger {
     }
 
     //Config Functions
-    fn set_log_level(&mut self, log_level: LogLevel) { self.log_level = log_level; }
+    pub fn set_log_level(&mut self, log_level: LogLevel) { self.log_level = log_level; }
 
-    fn set_subseconds_enabled(&mut self, enabled : bool){ self.use_subseconds_enabled = enabled; }
+    pub fn set_subseconds_enabled(&mut self, enabled : bool){ self.use_subseconds_enabled = enabled; }
 
-    fn set_subseconds_level(&mut self, level: LogLevel) { self.subseconds_level = level; }
+    pub fn set_subseconds_level(&mut self, level: LogLevel) { self.subseconds_level = level; }
 
     //fn set_file_output_enabled(&mut self, enabled : bool){ self.file_output_enabled = enabled; }
 
@@ -95,23 +95,23 @@ impl Logger {
     
 
     //Helper functions
-    fn trace(&self, message : &str){
+    pub fn trace(&self, message : &str){
         self.log(LogEntry{level : LogLevel::Trace, message : message.to_string()})
     }
 
-    fn debug(&self, message : &str){
+    pub fn debug(&self, message : &str){
         self.log(LogEntry{level : LogLevel::Debug, message : message.to_string()})
     }
 
-    fn info(&self, message : &str){
+    pub fn info(&self, message : &str){
         self.log(LogEntry{level : LogLevel::Info, message : message.to_string()})
     }
 
-    fn warn(&self, message : &str){
+    pub fn warn(&self, message : &str){
         self.log(LogEntry{level : LogLevel::Warn, message : message.to_string()})
     }
 
-    fn error(&self, message : &str){
+    pub fn error(&self, message : &str){
         self.log(LogEntry{level : LogLevel::Error, message : message.to_string()})
     }
 
