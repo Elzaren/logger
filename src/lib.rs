@@ -4,8 +4,8 @@
 
 use std::fmt;
 use std::time::{SystemTime, UNIX_EPOCH};
-use std::fs::{File, OpenOptions};
-use std::io::Write;
+//use std::fs::{File, OpenOptions};
+//use std::io::Write;
 
 #[derive(PartialEq, PartialOrd)]
 pub enum LogLevel {
@@ -40,7 +40,7 @@ pub struct Logger {
     use_subseconds_enabled : bool,
     subseconds_level : LogLevel,
     //file_output_enabled : bool,
-    output_file : Option<File>,
+   // output_file : Option<File>,
     
 }
 
@@ -55,7 +55,7 @@ impl Logger {
             use_subseconds_enabled : true,
             subseconds_level : LogLevel::Debug,
             //file_output_enabled : true,
-            output_file : None,
+            //output_file : None,
         }
     }
 
