@@ -44,7 +44,11 @@ pub struct Logger {
    // output_file : Option<File>,
     
 }
-
+impl Default for Logger {
+    fn default() -> Self {
+        Logger::new()
+    }
+}
 impl Logger {
 
     //Logger Constructor
