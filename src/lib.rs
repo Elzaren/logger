@@ -7,15 +7,16 @@ use std::time::{SystemTime, UNIX_EPOCH};
 //use std::fs::{File, OpenOptions};
 //use std::io::Write;
 
-#[derive(PartialEq, PartialOrd)]
+#[derive(PartialEq, PartialOrd, Default)]
 pub enum LogLevel {
     Trace,
     Debug,
-    Info,
+    #[default] Info,
     Warn,
     Error,
 }
 
+#[derive(Default)]
 struct LogEntry {
     level: LogLevel,
     message: String,
